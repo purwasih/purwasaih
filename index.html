@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,8 +80,10 @@
         }
 
         .slide .emoji {
-            font-size: 3.5em;
+            font-size: 4em;
             margin-top: 20px;
+            position: relative;
+            animation: fly 2s infinite;
         }
 
         .slide .jargon {
@@ -94,7 +97,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            width: 100px;
+            width: 150px;
             height: auto;
         }
 
@@ -123,12 +126,26 @@
             color: #fff;
             transform: scale(1.1);
         }
+
+        /* Animation for the emoji */
+        @keyframes fly {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <img src="logo-iain-ponorogo.png" alt="Logo IAIN Ponorogo" class="logo">
+        <img src="logo-iain-ponorogoO1.png" alt="Logo IAIN Ponorogo" class="logo">
         <div class="slides">
             <!-- Slide 1: Selamat Datang -->
             <div class="slide active">
@@ -141,7 +158,7 @@
             <!-- Slide 2: Selamat Menjalankan PBAK -->
             <div class="slide">
                 <h1>Selamat Menjalankan PBAK!</h1>
-                <p>Mulai petualangan akademik Anda dengan penuh semangat! 😃</p>
+                <p>Mulai petualangan akademik Kalian dengan penuh semangat! 😃</p>
                 <div class="emoji">🎓</div>
                 <p class="jargon">Askara anagata<br>Generasi muda, mendunia</p>
             </div>
@@ -157,7 +174,7 @@
             <!-- Slide 4: Penutup -->
             <div class="slide">
                 <h1>Sampai Jumpa di Kampus!</h1>
-                <p>Kami tidak sabar untuk melihat apa yang akan Anda capai! 💪</p>
+                <p>Kami tidak sabar untuk melihat apa yang akan Kalian capai! 💪</p>
                 <div class="emoji">✨</div>
                 <p class="jargon">Generasi muda<br>Mendunia!</p>
             </div>
