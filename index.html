@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeelDream - PBAK FUAD 2024</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide.prev {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .slide.next {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .slide h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .slide p {
+            font-size: 1.4em;
+            margin: 10px 0;
+            max-width: 600px;
+            color: #444;
+        }
+
+        .slide .emoji {
+            font-size: 3.5em;
+            margin-top: 20px;
+        }
+
+        .slide .jargon {
+            font-size: 1.6em;
+            color: #555;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .navigation button {
+            background-color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            color: #8f94fb;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .navigation button:hover {
+            background-color: #4e54c8;
+            color: #fff;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="slides">
+            <!-- Slide 1: Selamat Datang -->
+            <div class="slide active">
+                <h1>Selamat Datang di IAIN Ponorogo!</h1>
+                <p>Halo Mahasiswa Baru! 🎉</p>
+                <div class="emoji">👋</div>
+                <p class="jargon">PBAK FUAD 2024<br>Bergerak bersama, sambut masa depan</p>
+            </div>
+
+            <!-- Slide 2: Selamat Menjalankan PBAK -->
+            <div class="slide">
+                <h1>Selamat Menjalankan PBAK!</h1>
+                <p>Mulai petualangan akademik Anda dengan penuh semangat! 😃</p>
+                <div class="emoji">🎓</div>
+                <p class="jargon">Askara anagata<br>Generasi muda, mendunia</p>
+            </div>
+
+            <!-- Slide 3: Pesan Motivasi -->
+            <div class="slide">
+                <h1>Semangat dan Sukses!</h1>
+                <p>Jangan lupa, setiap langkah adalah bagian dari perjalanan yang lebih besar. 🌟</p>
+                <div class="emoji">🚀</div>
+                <p class="jargon">Bergerak bersama<br>Sambut masa depan!</p>
+            </div>
+
+            <!-- Slide 4: Penutup -->
+            <div class="slide">
+                <h1>Sampai Jumpa di Kampus!</h1>
+                <p>Kami tidak sabar untuk melihat apa yang akan Anda capai! 💪</p>
+                <div class="emoji">✨</div>
+                <p class="jargon">Generasi muda<br>Mendunia!</p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button id="prevSlide">◀️ Sebelumnya</button>
+            <button id="nextSlide">Berikutnya ▶️</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function updateSlide(position) {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev', 'next');
+                if (index === position) {
+                    slide.classList.add('active');
+                } else if (index === (position - 1 + totalSlides) % totalSlides) {
+                    slide.classList.add('prev');
+                } else if (index === (position + 1) % totalSlides) {
+                    slide.classList.add('next');
+                }
+            });
+        }
+
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide(currentSlide);
+        });
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide(currentSlide);
+        });
+
+        // Initialize the first slide
+        updateSlide(currentSlide);
+    </script>
+
+</body>
+
+</html>
